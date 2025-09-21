@@ -47,14 +47,10 @@ Este projeto é um MVP mobile desenvolvido em Next.js, com o objetivo de fornece
    pnpm install # ou npm install, yarn install, conforme o gerenciador de pacotes
    ```
 
-2. O projeto precisa de integração com autenticação, é necessário ter uma conta no [kinde.com](https://kinde.com)
-   2.1. Crie um arquivo `.env.local` seguindo o exemplo em `.env.local.example`
-   2.2. Substitua as variáveis pelas chaves indicadas na sua conta da Kinde
-
-3. Inicie o servidor de desenvolvimento:
+2. Inicie o servidor de desenvolvimento:
 
    ```bash
    pnpm dev # ou npm run dev, yarn dev, etc.
    ```
 
-4. Acesse [http://localhost:3000](http://localhost:3000) no navegador.
+3. Acesse [http://localhost:3000](http://localhost:3000) no navegador.

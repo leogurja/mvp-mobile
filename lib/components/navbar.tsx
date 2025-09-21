@@ -1,12 +1,13 @@
 import { MenuIcon } from "lucide-react";
 import Button from "./ui/button";
-import { LoginLink } from "@kinde-oss/kinde-auth-nextjs/components";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import NavLink from "./ui/navlink";
+import UserSection from "./user-section";
+import { Suspense } from "react";
 
 export default function Navbar() {
   return (
@@ -24,9 +25,15 @@ export default function Navbar() {
           <NavLink href="/trilhas">Trilhas</NavLink>
           <NavLink href="/cachoeiras">Cachoeiras</NavLink>
           <NavLink href="/eventos">Eventos</NavLink>
-          <Button variant="ghost" size="sm" className="w-full" asChild>
-            <LoginLink>Login</LoginLink>
-          </Button>
+          <Suspense
+            fallback={
+              <Button variant="ghost" size="sm" className="w-full">
+                Carregando...
+              </Button>
+            }
+          >
+            <UserSection />
+          </Suspense>
         </DropdownMenuContent>
       </DropdownMenu>
     </nav>
