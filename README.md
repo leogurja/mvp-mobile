@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MVP Mobile – Circuito Terê Verde
 
-## Getting Started
+## Dados dos Integrantes
 
-First, run the development server:
+- João Paulo da Costa Rosa - 06007776
+- Leonardo Gurgel Maciel Ferreira – 06010973
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Situação Problema Escolhida
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+A geografia do território municipal de Teresópolis é caracterizada por terrenos montanhosos entremeados por vales. A área urbana encontra-se em um planalto a 869 metros acima do nível do mar e é delimitada por três unidades de conservação: o Parque Nacional da Serra dos Órgãos, o Parque Estadual dos Três Picos e o Parque Natural Municipal Montanhas de Teresópolis. A existência das unidades de conservação proporciona ao município o turismo ambiental, em especial de montanhismo, e também limitam o crescimento urbano.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Teresópolis é um destino turístico popular, atraindo visitantes em busca de belezas naturais e atividades ao ar livre, como trilhas e escaladas. A proposta do Circuito Terê Verde busca promover essas atrações, destacando a rica biodiversidade e as opções de ecoturismo disponíveis na região. A plataforma “Terê Verde Online” permitirá que os visitantes tenham acesso a informações atualizadas sobre a biodiversidade, trilhas, cachoeiras e eventos que ocorrem nesses espaços protegidos.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Com uma interface amigável e recursos interativos, o site se tornará uma ferramenta essencial para turistas que desejam explorar as belezas naturais de Teresópolis de forma consciente e atualizada.
 
-## Learn More
+## Descrição do MVP
 
-To learn more about Next.js, take a look at the following resources:
+Este projeto é um MVP mobile desenvolvido em Next.js, com o objetivo de fornecer informações atualizadas sobre biodiversidade, trilhas, cachoeiras e eventos, além de permitir a gestão de disponibilidade e novidades por administradores.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Requisitos Atendidos
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Funcionais
 
-## Deploy on Vercel
+- **Acesso a informações**: Os visitantes têm acesso a informações atualizadas sobre biodiversidade, trilhas, cachoeiras e eventos.
+- **Login para Administradores**: Botão de login para acesso a áreas restritas do site.
+- **Gestão de Disponibilidade**: Área administrativa para configurar disponibilidade, horários de funcionamento de eventos/temporadas e atualizações de novidades.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Não Funcionais
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Usabilidade**: Interface amigável e de fácil utilização.
+- **Acesso Offline**: Algum nível de acesso offline, considerando uso em locais remotos.
+- **Desempenho Rápido**: Resposta rápida para muitos usuários simultâneos.
+- **Segurança de Dados**: Segurança e privacidade dos dados dos administradores.
+
+## Escopo (Fora do MVP)
+
+- Integração com sistemas de pagamento online.
+- Funcionalidades de chat em tempo real.
+- Suporte a múltiplos idiomas.
+- Notificações push.
+
+## Como Executar Localmente
+
+1. Instale as dependências:
+
+   ```bash
+   pnpm install # ou npm install, yarn install, conforme o gerenciador de pacotes
+   ```
+
+2. O projeto precisa de integração com autenticação, é necessário ter uma conta no [kinde.com](https://kinde.com)
+
+- Crie um arquivo `.env.local` seguindo o exemplo em .env.local.example
+
+3. Inicie o servidor de desenvolvimento:
+
+   ```bash
+   pnpm dev # ou npm run dev, yarn dev, etc.
+   ```
+
+4. Acesse [http://localhost:3000](http://localhost:3000) no navegador.
