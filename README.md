@@ -48,8 +48,8 @@ Este projeto é um MVP mobile desenvolvido em Next.js, com o objetivo de fornece
    ```
 
 2. O projeto precisa de integração com autenticação, é necessário ter uma conta no [kinde.com](https://kinde.com)
-
-- Crie um arquivo `.env.local` seguindo o exemplo em .env.local.example
+   2.1. Crie um arquivo `.env.local` seguindo o exemplo em `.env.local.example`
+   2.2. Substitua as variáveis pelas chaves indicadas na sua conta da Kinde
 
 3. Inicie o servidor de desenvolvimento:
 
