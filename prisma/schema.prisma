@@ -14,34 +14,54 @@ datasource db {
   url      = "file:./dev.db"
 }
 
-model User {
-  id Int @id @default(autoincrement())
-  email String @unique
-  name String
-  passwordDigest String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+enum PointOfInterestType {
+  WATERFALL
+  VIEWPOINT
+  CAMPSITE
+  TRAIL
+  OTHER
 }
 
-model Trail {
-  id Int @id @default(autoincrement())
-  text String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+model User {
+  id             Int      @id @default(autoincrement())
+  email          String   @unique
+  name           String
+  passwordDigest String
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model Park {
+  id               Int               @id @default(autoincrement())
+  name             String            @unique
+  description      String
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+  pointsOfInterest PointOfInterest[]
+  events           Event[]
 }
 
 model Event {
-  id Int @id @default(autoincrement())
-  date DateTime
-  location String
-  text String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id          Int      @id @default(autoincrement())
+  date        DateTime
+  location    String
+  name        String
+  description String
+  parkId      Int
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  park Park @relation(fields: [parkId], references: [id])
 }
 
-model Waterfall {
-  id Int @id @default(autoincrement())
-  text String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+model PointOfInterest {
+  id          Int                 @id @default(autoincrement())
+  name        String
+  description String
+  type        PointOfInterestType @default(OTHER)
+  parkId      Int
+  createdAt   DateTime            @default(now())
+  updatedAt   DateTime            @updatedAt
+
+  park Park @relation(fields: [parkId], references: [id])
 }

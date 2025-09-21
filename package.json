@@ -9,6 +9,7 @@
     "start": "next start",
     "lint": "eslint",
     "create-user": "tsx scripts/create-user.ts",
+    "prisma:seed": "tsx prisma/seed.ts",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
     "prisma:studio": "prisma studio"
