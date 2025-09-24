@@ -2,11 +2,14 @@
 
 import { compare } from "bcryptjs";
 import db from "../db";
-import type { LoginData } from "../schemas/login";
+import type { LoginSchema } from "../schemas/login";
 import { sign } from "jsonwebtoken";
 import { env } from "../env";
+import { cookies } from "next/headers";
+import loginSchema from "../schemas/login";
 
-export async function login({ email, password }: LoginData) {
+export async function login(input: LoginSchema) {
+  const { email, password } = loginSchema.parse(input);
   const user = await db.user.findUnique({ where: { email } });
   if (!user) return null;
 
@@ -18,6 +21,16 @@ export async function login({ email, password }: LoginData) {
     env.JWT_SECRET,
     { expiresIn: "7d" }
   );
+
+  const requestCookies = await cookies();
+  requestCookies.set({
+    name: "token",
+    value: token,
+    httpOnly: true,
+    secure: true,
+    sameSite: "lax",
+    path: "/",
+  });
 
   // Retorne dados seguros do usuário e o token
   return { id: user.id, email: user.email, name: user.name, token };

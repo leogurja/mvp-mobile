@@ -1,0 +1,12 @@
+import { cookies } from "next/headers";
+import { unauthorized } from "next/navigation";
+import { verify } from "jsonwebtoken";
+import { env } from "./env";
+
+export async function requireAuth() {
+  const requestCookies = await cookies();
+  const token = requestCookies.get("token");
+
+  if (!token?.value) unauthorized();
+  return verify(token.value, env.JWT_SECRET);
+}

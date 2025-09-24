@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-const createUserSchema = z.object({
+export const createUserSchema = z.object({
   email: z
     .string({ required_error: "Email obrigatório" })
     .email("Email inválido"),
@@ -12,6 +12,4 @@ const createUserSchema = z.object({
     .min(2, "Nome muito curto"),
 });
 
-export type CreateUserData = z.infer<typeof createUserSchema>;
-
-export default createUserSchema;
+export type CreateUserSchema = z.infer<typeof createUserSchema>;

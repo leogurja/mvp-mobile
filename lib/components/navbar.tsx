@@ -6,8 +6,6 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import NavLink from "./ui/navlink";
-import UserSection from "./user-section";
-import { Suspense } from "react";
 
 export default function Navbar() {
   return (
@@ -25,15 +23,6 @@ export default function Navbar() {
           <NavLink href="/trilhas">Trilhas</NavLink>
           <NavLink href="/cachoeiras">Cachoeiras</NavLink>
           <NavLink href="/eventos">Eventos</NavLink>
-          <Suspense
-            fallback={
-              <Button variant="ghost" size="sm" className="w-full">
-                Carregando...
-              </Button>
-            }
-          >
-            <UserSection />
-          </Suspense>
         </DropdownMenuContent>
       </DropdownMenu>
     </nav>

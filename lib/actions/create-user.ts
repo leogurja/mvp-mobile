@@ -2,14 +2,18 @@
 
 import db from "@/lib/db";
 import bcrypt from "bcryptjs";
-import type { CreateUserData } from "../schemas/create-user";
+import { createUserSchema, type CreateUserSchema } from "../schemas/user";
+import { requireAuth } from "../require-auth";
 
-export default async function createUser(user: CreateUserData) {
-  const passwordDigest = await bcrypt.hash(user.password, 10);
+export default async function createUser(input: CreateUserSchema) {
+  const user = await requireAuth();
+  console.log(user);
+  const passwordDigest = await bcrypt.hash(input.password, 10);
+  const newUser = createUserSchema.parse(input);
 
   return await db.user.create({
     data: {
-      ...user,
+      ...newUser,
       passwordDigest,
     },
   });
