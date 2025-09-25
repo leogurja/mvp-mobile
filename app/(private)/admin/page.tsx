@@ -1,6 +1,6 @@
-import EventForm from "@/lib/components/system/event/form";
-import EventTable from "@/lib/components/system/event/table";
-import Button from "@/lib/components/ui/button";
+import EventForm from "@/lib/components/organisms/event/form";
+import EventTable from "@/lib/components/organisms/event/table";
+import Button from "@/lib/components/atoms/button";
 import db from "@/lib/db";
 
 export default async function AdminPage() {

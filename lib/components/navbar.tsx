@@ -1,11 +1,11 @@
 import { MenuIcon } from "lucide-react";
-import Button from "./ui/button";
+import Button from "./atoms/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuTrigger,
-} from "./ui/dropdown-menu";
-import NavLink from "./ui/navlink";
+} from "./atoms/dropdown-menu";
+import NavLink from "./atoms/navlink";
 
 export default function Navbar() {
   return (

@@ -12,7 +12,7 @@ import {
   type UseFormReturn,
 } from "react-hook-form";
 import { cn } from "@/lib/utils";
-import { Label } from "@/lib/components/ui/label";
+import { Label } from "@/lib/components/atoms/label";
 import {
   createContext,
   useContext,

@@ -13,7 +13,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "../ui/table";
+} from "../atoms/table";
 
 interface DataTableProps<T> {
   data: T[];

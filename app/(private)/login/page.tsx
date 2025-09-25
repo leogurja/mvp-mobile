@@ -1,9 +1,9 @@
 "use client";
 
 import { login } from "@/lib/actions/login";
-import Button from "@/lib/components/ui/button";
-import Form from "@/lib/components/ui/form";
-import { Input } from "@/lib/components/ui/input";
+import Button from "@/lib/components/atoms/button";
+import Form from "@/lib/components/atoms/form";
+import { Input } from "@/lib/components/atoms/input";
 import loginSchema, { type LoginSchema } from "@/lib/schemas/login";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";

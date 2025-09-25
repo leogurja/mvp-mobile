@@ -1,19 +1,20 @@
 "use client";
 
-import { Input } from "@/lib/components/ui/input";
-import { Label } from "@/lib/components/ui/label";
+import { Label } from "@/lib/components/atoms/label";
 import { useId, type ComponentProps } from "react";
+import Textarea from "../atoms/textarea";
 
-interface InputWithLabelProps extends Omit<ComponentProps<typeof Input>, "id"> {
+interface TextareaWithLabelProps
+  extends Omit<ComponentProps<typeof Textarea>, "id"> {
   label: string;
   error?: string | undefined;
 }
 
-export function InputWithLabel({
+export function TextareaWithLabel({
   label,
   error,
   ...props
-}: InputWithLabelProps) {
+}: TextareaWithLabelProps) {
   const id = useId();
 
   return (
@@ -21,7 +22,7 @@ export function InputWithLabel({
       <Label htmlFor={id} className="mb-2">
         {label}
       </Label>
-      <Input {...props} id={id} className={error ? "border-red-600" : ""} />
+      <Textarea {...props} id={id} className={error ? "border-red-600" : ""} />
       {error && <p className="text-sm text-red-600">{error}</p>}
     </div>
   );

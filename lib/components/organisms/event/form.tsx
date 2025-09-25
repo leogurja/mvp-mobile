@@ -4,14 +4,14 @@ import { createEvent, updateEvent } from "@/lib/actions/event";
 import { eventSchema, type EventSchema } from "@/lib/schemas/event";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import Button from "../../ui/button";
-import * as Dialog from "../../ui/dialog";
+import Button from "../../atoms/button";
+import * as Dialog from "../../atoms/dialog";
 import { useState, type ReactNode } from "react";
 import type { Park } from "@/generated/prisma";
-import Select from "../../ui/select";
-import Form from "../../ui/form";
-import { Input } from "../../ui/input";
-import Textarea from "../../ui/textarea";
+import Select from "../../atoms/select";
+import Form from "../../atoms/form";
+import { Input } from "../../atoms/input";
+import Textarea from "../../atoms/textarea";
 
 interface EventFormProps {
   event?: EventSchema & { id: number };
