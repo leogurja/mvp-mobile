@@ -20,7 +20,7 @@ export default async function Home() {
               alt={park.name}
               width={320}
               height={180}
-              className="rounded-lg mb-2"
+              className="rounded-lg mb-2 w-full"
             />
             <h2 className="text-lg font-semibold">{park.name}</h2>
             <p className="text-gray-700">{park.description}</p>
