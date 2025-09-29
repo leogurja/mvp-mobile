@@ -16,8 +16,7 @@ export default async function Home() {
             className="border rounded-lg p-4 shadow-sm"
           >
             <Image
-              unoptimized
-              src={`https://picsum.photos/320/180?random=${park.id}`}
+              src={park.imageUrl}
               alt={park.name}
               width={320}
               height={180}
