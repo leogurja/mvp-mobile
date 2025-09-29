@@ -1,6 +1,6 @@
 "use client";
 
-import { login } from "@/lib/actions/login";
+import { login } from "@/lib/services/login";
 import Button from "@/lib/components/atoms/button";
 import Form from "@/lib/components/atoms/form";
 import { Input } from "@/lib/components/atoms/input";

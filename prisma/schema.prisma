@@ -64,4 +64,6 @@ model PointOfInterest {
   updatedAt   DateTime            @updatedAt
 
   park Park @relation(fields: [parkId], references: [id])
+
+  @@unique([name, parkId])
 }

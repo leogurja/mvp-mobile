@@ -6,7 +6,7 @@ import type { ColumnDef } from "@tanstack/react-table";
 import DataTable from "../../molecules/data-table";
 import Button from "../../atoms/button";
 import EventForm from "./form";
-import { deleteEvent } from "@/lib/actions/event";
+import { deleteEvent } from "@/lib/services/event";
 
 interface EventTableProps {
   data: Event[];

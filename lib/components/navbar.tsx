@@ -6,11 +6,15 @@ import {
   DropdownMenuTrigger,
 } from "./atoms/dropdown-menu";
 import NavLink from "./atoms/navlink";
+import BackButton from "./molecules/back-button";
 
 export default function Navbar() {
   return (
-    <nav className="flex w-full items-center justify-between py-4 px-8 bg-white border-b border-neutral-100">
-      <span className="font-bold text-2xl tracking-wide">Terê Verde</span>
+    <nav className="bg-primary text-primary-foreground flex w-full items-center justify-between py-4 px-8 border-b border-neutral-100">
+      <div className="flex items-center gap-4">
+        <BackButton />
+        <span className="font-bold text-2xl tracking-wide">Terê Verde</span>
+      </div>
 
       <DropdownMenu>
         <DropdownMenuTrigger asChild>

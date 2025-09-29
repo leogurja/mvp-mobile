@@ -1,4 +1,5 @@
 import type { PointOfInterestType, PointOfInterest } from "@/generated/prisma";
+import PoiCard from "@/lib/components/organisms/point-of-interest/card";
 
 interface PoiTypeProps {
   pointsOfInterest: PointOfInterest[];
@@ -19,15 +20,11 @@ export default function PoiType({ pointsOfInterest, type }: PoiTypeProps) {
 
   return (
     <section className="mt-6" key={type}>
-      <h2 className="text-xl font-semibold">{poiTypeTitles[type]}</h2>
-      <ul>
-        {filteredPois.map((poi) => (
-          <li key={poi.id}>
-            <h3>{poi.name}</h3>
-            <p>{poi.description}</p>
-          </li>
-        ))}
-      </ul>
+      <h2 className="text-xl font-semibold py-2">{poiTypeTitles[type]}</h2>
+
+      {filteredPois.map((poi) => (
+        <PoiCard poi={poi} key={poi.id} />
+      ))}
     </section>
   );
 }

@@ -1,44 +1,50 @@
 "use client";
 
-import { createEvent, updateEvent } from "@/lib/services/event";
-import { eventSchema, type EventSchema } from "@/lib/schemas/event";
+import {
+  createPointOfInterest,
+  updatePointOfInterest,
+} from "@/lib/services/point-of-interest";
+import {
+  pointOfInterestSchema,
+  type PointOfInterestSchema,
+} from "@/lib/schemas/point-of-interest";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import Button from "../../atoms/button";
 import * as Dialog from "../../atoms/dialog";
 import { useState, type ReactNode } from "react";
-import type { Park } from "@/generated/prisma";
+import { PointOfInterestType, type Park } from "@/generated/prisma";
 import Select from "../../atoms/select";
 import Form from "../../atoms/form";
 import { Input } from "../../atoms/input";
 import Textarea from "../../atoms/textarea";
 
-interface EventFormProps {
-  event?: EventSchema & { id: number };
+interface PointOfInterestFormProps {
+  pointOfInterest?: PointOfInterestSchema & { id: number };
   availableParks: Park[];
   children: ReactNode;
 }
 
-export default function EventForm({
-  event,
+export default function PointOfInterestForm({
+  pointOfInterest,
   availableParks,
   children,
-}: EventFormProps) {
+}: PointOfInterestFormProps) {
   const [open, setOpen] = useState(false);
-  const form = useForm<EventSchema>({
-    resolver: zodResolver(eventSchema),
+  const form = useForm<PointOfInterestSchema>({
+    resolver: zodResolver(pointOfInterestSchema),
     mode: "onBlur",
     defaultValues: {
-      ...event,
+      ...pointOfInterest,
     },
   });
 
-  const onSubmit = async (data: EventSchema) => {
+  const onSubmit = async (data: PointOfInterestSchema) => {
     console.log(data);
-    if (event) {
-      await updateEvent(event.id, data);
+    if (pointOfInterest) {
+      await updatePointOfInterest(pointOfInterest.id, data);
     } else {
-      await createEvent(data);
+      await createPointOfInterest(data);
     }
 
     setOpen(false);
@@ -49,7 +55,7 @@ export default function EventForm({
       <Dialog.Trigger asChild>{children}</Dialog.Trigger>
       <Dialog.Content>
         <Dialog.Header>
-          <Dialog.Title>Criar Novo Evento</Dialog.Title>
+          <Dialog.Title>Criar Novo Ponto de Interesse</Dialog.Title>
         </Dialog.Header>
         <Form.Root {...form} onSubmit={form.handleSubmit(onSubmit)}>
           <div className="flex flex-col items-center gap-4 py-4">
@@ -59,31 +65,10 @@ export default function EventForm({
                 <Form.Item>
                   <Form.Label>Nome</Form.Label>
                   <Form.Control>
-                    <Input placeholder="Nome do Evento" {...field} />
-                  </Form.Control>
-                  <Form.Message />
-                </Form.Item>
-              )}
-            />
-            <Form.Field
-              name="date"
-              render={({ field }) => (
-                <Form.Item>
-                  <Form.Label>Data do Evento</Form.Label>
-                  <Form.Control>
-                    <Input type="datetime-local" {...field} />
-                  </Form.Control>
-                  <Form.Message />
-                </Form.Item>
-              )}
-            />
-            <Form.Field
-              name="location"
-              render={({ field }) => (
-                <Form.Item>
-                  <Form.Label>Local do Evento</Form.Label>
-                  <Form.Control>
-                    <Input placeholder="Local do Evento" {...field} />
+                    <Input
+                      placeholder="Nome do Ponto de interesse"
+                      {...field}
+                    />
                   </Form.Control>
                   <Form.Message />
                 </Form.Item>
@@ -93,9 +78,35 @@ export default function EventForm({
               name="description"
               render={({ field }) => (
                 <Form.Item>
-                  <Form.Label>Descrição</Form.Label>
+                  <Form.Label>Breve descrição</Form.Label>
                   <Form.Control>
-                    <Textarea placeholder="Descrição do Evento" {...field} />
+                    <Textarea {...field} />
+                  </Form.Control>
+                  <Form.Message />
+                </Form.Item>
+              )}
+            />
+            <Form.Field
+              name="type"
+              render={({ field }) => (
+                <Form.Item>
+                  <Form.Label>Tipo</Form.Label>
+                  <Form.Control>
+                    <Select
+                      onValueChange={field.onChange}
+                      defaultValue={field.value as string}
+                    >
+                      <Select.Trigger className="w-full">
+                        <Select.Value placeholder="Selecione o Tipo" />
+                      </Select.Trigger>
+                      <Select.Content className="w-full">
+                        {Object.keys(PointOfInterestType).map((type) => (
+                          <Select.Item key={type} value={type}>
+                            {type}
+                          </Select.Item>
+                        ))}
+                      </Select.Content>
+                    </Select>
                   </Form.Control>
                   <Form.Message />
                 </Form.Item>
@@ -138,7 +149,7 @@ export default function EventForm({
               Cancelar
             </Button>
             <Button type="submit" variant="default" className="w-full">
-              Salvar Evento
+              Salvar Ponto de interesse
             </Button>
           </div>
         </Form.Root>
