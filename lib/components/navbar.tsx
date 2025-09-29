@@ -1,11 +1,3 @@
-import { MenuIcon } from "lucide-react";
-import Button from "./atoms/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuTrigger,
-} from "./atoms/dropdown-menu";
-import NavLink from "./atoms/navlink";
 import BackButton from "./molecules/back-button";
 
 export default function Navbar() {
@@ -16,7 +8,7 @@ export default function Navbar() {
         <span className="font-bold text-2xl tracking-wide">Terê Verde</span>
       </div>
 
-      <DropdownMenu>
+      {/* <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button aria-label="Abrir menu">
             <MenuIcon className="size-7" />
@@ -28,7 +20,7 @@ export default function Navbar() {
           <NavLink href="/cachoeiras">Cachoeiras</NavLink>
           <NavLink href="/eventos">Eventos</NavLink>
         </DropdownMenuContent>
-      </DropdownMenu>
+      </DropdownMenu> */}
     </nav>
   );
 }

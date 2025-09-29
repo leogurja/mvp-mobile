@@ -40,7 +40,7 @@ export default function UpdateUserForm({
       <Dialog.Trigger asChild>{children}</Dialog.Trigger>
       <Dialog.Content>
         <Dialog.Header>
-          <Dialog.Title>Criar Novo Usero</Dialog.Title>
+          <Dialog.Title>Atualizar Usuário</Dialog.Title>
         </Dialog.Header>
         <Form.Root {...form} onSubmit={onSubmit}>
           <div className="flex flex-col items-center gap-4 py-4">
@@ -50,7 +50,7 @@ export default function UpdateUserForm({
                 <Form.Item>
                   <Form.Label>Nome</Form.Label>
                   <Form.Control>
-                    <Input placeholder="Nome do Usero" {...field} />
+                    <Input placeholder="Nome" {...field} />
                   </Form.Control>
                   <Form.Message />
                 </Form.Item>
@@ -77,7 +77,7 @@ export default function UpdateUserForm({
               Cancelar
             </Button>
             <Button type="submit" variant="default" className="w-full">
-              Salvar Usero
+              Salvar usuário
             </Button>
           </div>
         </Form.Root>
