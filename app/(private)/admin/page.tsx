@@ -23,19 +23,19 @@ export default async function AdminPage() {
 
   return (
     <main className="container mx-auto flex flex-col gap-5 mt-5">
-      <section className="flex flex-col">
+      <section className="flex flex-col px-2">
         <CreateUserForm>
           <Button className="self-end mb-4">Criar Usuário</Button>
         </CreateUserForm>
         <UserTable data={users} loggedUserId={user.id} />
       </section>
-      <section className="flex flex-col">
+      <section className="flex flex-col px-2">
         <EventForm availableParks={parks}>
           <Button className="self-end mb-4">Criar Evento</Button>
         </EventForm>
         <EventTable data={events} availableParks={parks} />
       </section>
-      <section className="flex flex-col">
+      <section className="flex flex-col px-2">
         <PointOfInterestForm availableParks={parks}>
           <Button className="self-end mb-4">Criar Ponto de Interesse</Button>
         </PointOfInterestForm>
