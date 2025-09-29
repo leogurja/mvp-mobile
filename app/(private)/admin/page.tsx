@@ -10,16 +10,15 @@ import CreateUserForm from "@/lib/components/organisms/user/create-form";
 import UserTable from "@/lib/components/organisms/user/table";
 import { getAllUsers } from "@/lib/services/user";
 import { requireAuth } from "@/lib/require-auth";
+import { getAllPointOfInterestTypes } from "@/lib/services/point-of-interest-types";
 
 export default async function AdminPage() {
   const user = await requireAuth();
-
-  const [events, parks, pointsOfInterest, users] = await Promise.all([
-    getAllEvents(),
-    getAllParks(),
-    getAllPointsOfInterest(),
-    getAllUsers(),
-  ]);
+  const events = getAllEvents();
+  const parks = getAllParks();
+  const pointsOfInterest = getAllPointsOfInterest();
+  const pointOfInterestTypes = getAllPointOfInterestTypes();
+  const users = getAllUsers();
 
   return (
     <main className="container mx-auto flex flex-col gap-5 mt-5">
@@ -36,10 +35,17 @@ export default async function AdminPage() {
         <EventTable data={events} availableParks={parks} />
       </section>
       <section className="flex flex-col px-2">
-        <PointOfInterestForm availableParks={parks}>
+        <PointOfInterestForm
+          availableParks={parks}
+          pointOfInterestTypes={pointOfInterestTypes}
+        >
           <Button className="self-end mb-4">Criar Ponto de Interesse</Button>
         </PointOfInterestForm>
-        <PointOfInterestTable data={pointsOfInterest} availableParks={parks} />
+        <PointOfInterestTable
+          data={pointsOfInterest}
+          availableParks={parks}
+          pointOfInterestTypes={pointOfInterestTypes}
+        />
       </section>
     </main>
   );

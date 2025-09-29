@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import Button from "../../atoms/button";
 import * as Dialog from "../../atoms/dialog";
-import { useState, type ReactNode } from "react";
+import { use, useState, type ReactNode } from "react";
 import type { Park } from "@/generated/prisma";
 import Select from "../../atoms/select";
 import Form from "../../atoms/form";
@@ -15,7 +15,7 @@ import Textarea from "../../atoms/textarea";
 
 interface EventFormProps {
   event?: EventSchema & { id: number };
-  availableParks: Park[];
+  availableParks: Promise<Park[]>;
   children: ReactNode;
 }
 
@@ -24,6 +24,7 @@ export default function EventForm({
   availableParks,
   children,
 }: EventFormProps) {
+  const parks = use(availableParks);
   const [open, setOpen] = useState(false);
   const form = useForm<EventSchema>({
     resolver: zodResolver(eventSchema),
@@ -117,7 +118,7 @@ export default function EventForm({
                         <Select.Value placeholder="Selecione o Parque" />
                       </Select.Trigger>
                       <Select.Content className="w-full">
-                        {availableParks.map((park) => (
+                        {parks.map((park) => (
                           <Select.Item key={park.id} value={park.id.toString()}>
                             {park.name}
                           </Select.Item>

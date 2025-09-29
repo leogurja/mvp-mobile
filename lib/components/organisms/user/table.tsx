@@ -9,7 +9,7 @@ import UpdateUserForm from "./update-form";
 import { deleteUser } from "@/lib/services/user";
 
 interface UserTableProps {
-  data: Omit<User, "passwordDigest">[];
+  data: Promise<Omit<User, "passwordDigest">[]>;
   loggedUserId: number;
 }
 

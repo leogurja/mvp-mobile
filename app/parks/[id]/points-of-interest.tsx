@@ -1,6 +1,6 @@
 import PoiType from "./poi-type";
 import { getPointsOfInterestByParkId } from "@/lib/services/point-of-interest";
-import { getAllPointsOfInterestTypes } from "@/lib/services/point-of-interest-types";
+import { getAllPointOfInterestTypes } from "@/lib/services/point-of-interest-types";
 
 interface PointsOfInterestProps {
   parkId: number;
@@ -11,7 +11,7 @@ export default async function PointsOfInterest({
 }: PointsOfInterestProps) {
   const [pointsOfInterest, pointOfInterestTypes] = await Promise.all([
     getPointsOfInterestByParkId(parkId),
-    getAllPointsOfInterestTypes(),
+    getAllPointOfInterestTypes(),
   ]);
 
   return pointOfInterestTypes.map((type) => (

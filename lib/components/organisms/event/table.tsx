@@ -9,8 +9,8 @@ import EventForm from "./form";
 import { deleteEvent } from "@/lib/services/event";
 
 interface EventTableProps {
-  data: Event[];
-  availableParks: Park[];
+  data: Promise<Event[]>;
+  availableParks: Promise<Park[]>;
 }
 
 const dateFormatter = new Intl.DateTimeFormat("pt-BR", {

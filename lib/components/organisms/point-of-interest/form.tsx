@@ -12,8 +12,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import Button from "../../atoms/button";
 import * as Dialog from "../../atoms/dialog";
-import { useState, type ReactNode } from "react";
-import { PointOfInterestType, type Park } from "@/generated/prisma";
+import { use, useState, type ReactNode } from "react";
+import type { Park, PointOfInterestType } from "@/generated/prisma";
 import Select from "../../atoms/select";
 import Form from "../../atoms/form";
 import { Input } from "../../atoms/input";
@@ -21,15 +21,19 @@ import Textarea from "../../atoms/textarea";
 
 interface PointOfInterestFormProps {
   pointOfInterest?: PointOfInterestSchema & { id: number };
-  availableParks: Park[];
+  pointOfInterestTypes: Promise<PointOfInterestType[]>;
+  availableParks: Promise<Park[]>;
   children: ReactNode;
 }
 
 export default function PointOfInterestForm({
   pointOfInterest,
   availableParks,
+  pointOfInterestTypes,
   children,
 }: PointOfInterestFormProps) {
+  const parks = use(availableParks);
+  const poiTypes = use(pointOfInterestTypes);
   const [open, setOpen] = useState(false);
   const form = useForm<PointOfInterestSchema>({
     resolver: zodResolver(pointOfInterestSchema),
@@ -100,9 +104,9 @@ export default function PointOfInterestForm({
                         <Select.Value placeholder="Selecione o Tipo" />
                       </Select.Trigger>
                       <Select.Content className="w-full">
-                        {Object.keys(PointOfInterestType).map((type) => (
-                          <Select.Item key={type} value={type}>
-                            {type}
+                        {poiTypes.map((type) => (
+                          <Select.Item key={type.id} value={type.id.toString()}>
+                            {type.singular}
                           </Select.Item>
                         ))}
                       </Select.Content>
@@ -128,7 +132,7 @@ export default function PointOfInterestForm({
                         <Select.Value placeholder="Selecione o Parque" />
                       </Select.Trigger>
                       <Select.Content className="w-full">
-                        {availableParks.map((park) => (
+                        {parks.map((park) => (
                           <Select.Item key={park.id} value={park.id.toString()}>
                             {park.name}
                           </Select.Item>

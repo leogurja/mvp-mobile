@@ -14,15 +14,17 @@ import {
   TableHeader,
   TableRow,
 } from "../atoms/table";
+import { use } from "react";
 
 interface DataTableProps<T> {
-  data: T[];
+  data: Promise<T[]>;
   columns: ColumnDef<T>[];
 }
 
 export default function DataTable<T>({ data, columns }: DataTableProps<T>) {
+  const awaitedData = use(data);
   const table = useReactTable({
-    data,
+    data: awaitedData,
     columns,
     getCoreRowModel: getCoreRowModel(),
   });
