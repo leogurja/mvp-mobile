@@ -48,7 +48,9 @@ export const getAllPointsOfInterest = cache(async () => {
 });
 
 export const getPointOfInterestById = cache(async (id: number) => {
-  const poi = await db.pointOfInterest.findUnique({ where: { id } });
+  const poi = await db.pointOfInterest.findUnique({
+    where: { id },
+  });
   if (!poi) notFound();
 
   return poi;
