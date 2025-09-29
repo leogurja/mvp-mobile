@@ -28,7 +28,7 @@ export default function LoginPage() {
   };
 
   return (
-    <main className="max-w-xl mx-auto flex flex-col items-center">
+    <main className="max-w-xl mx-auto flex flex-col items-center px-2">
       <Form.Root
         {...form}
         className="grid gap-4 py-4 w-full"
