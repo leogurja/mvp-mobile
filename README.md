@@ -54,3 +54,11 @@ Este projeto é um MVP mobile desenvolvido em Next.js, com o objetivo de fornece
    ```
 
 3. Acesse [http://localhost:3000](http://localhost:3000) no navegador.
+
+## Acesso ao painel de admin
+
+O painel de admin é propositalmente escondido da navegação normal do App.
+Para acessar, vá até [http://localhost:3000/admin](http://localhost:3000/admin)
+Em desenvolvimento, o usuário e senha pré-criado é:
+email: `admin@admin.com`
+senha: `admin`
