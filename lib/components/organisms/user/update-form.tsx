@@ -23,9 +23,7 @@ export default function UpdateUserForm({
   const form = useForm<UpdateUserSchema>({
     resolver: zodResolver(updateUserSchema),
     mode: "onBlur",
-    defaultValues: {
-      ...user,
-    },
+    defaultValues: user,
   });
 
   const onSubmit = form.handleSubmit(async (data) => {

@@ -39,6 +39,8 @@ export default function PointOfInterestForm({
     resolver: zodResolver(pointOfInterestSchema),
     mode: "onBlur",
     defaultValues: {
+      name: "",
+      description: "",
       ...pointOfInterest,
     },
   });

@@ -30,6 +30,9 @@ export default function EventForm({
     resolver: zodResolver(eventSchema),
     mode: "onBlur",
     defaultValues: {
+      name: "",
+      location: "",
+      description: "",
       ...event,
     },
   });

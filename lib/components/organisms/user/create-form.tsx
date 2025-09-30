@@ -13,19 +13,18 @@ import Textarea from "../../atoms/textarea";
 
 interface CreateUserFormProps {
   children: ReactNode;
-  user?: CreateUserSchema;
 }
 
-export default function CreateUserForm({
-  user,
-  children,
-}: CreateUserFormProps) {
+export default function CreateUserForm({ children }: CreateUserFormProps) {
   const [open, setOpen] = useState(false);
   const form = useForm<CreateUserSchema>({
     resolver: zodResolver(createUserSchema),
     mode: "onBlur",
     defaultValues: {
-      ...user,
+      name: "",
+      email: "",
+      password: "",
+      passwordConfirm: "",
     },
   });
 
