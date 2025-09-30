@@ -61,10 +61,7 @@ Este projeto é um MVP mobile desenvolvido em Next.js, com o objetivo de fornece
    ```bash
    npx prisma migrate dev
    npx prisma db seed
-   ```
-
-prisma migrate dev: cria as tabelas no banco de dados conforme o schema definido.
-prisma db seed: popula o banco com dados iniciais, como o usuário admin.  
+   ```  
 
 ## Acesso ao painel de admin
 
