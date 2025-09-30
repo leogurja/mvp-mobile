@@ -59,8 +59,8 @@ Este projeto é um MVP mobile desenvolvido em Next.js, com o objetivo de fornece
 4. Configure o banco de dados antes de fazer login, rodando:
 
    ```bash
-   npx prisma migrate dev
-   npx prisma db seed
+   npx prisma migrate dev # ou npm run prisma:migrate
+   npx prisma db seed # ou npm run prisma:seed
    ```  
 
 ## Acesso ao painel de admin
