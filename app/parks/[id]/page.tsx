@@ -1,8 +1,8 @@
 import { findParkById, getAllParkIds } from "@/lib/services/parks";
 import PointsOfInterest from "./points-of-interest";
-import { Suspense } from "react";
 import Events from "./events";
 import SeeMore from "@/lib/components/atoms/see-more";
+import * as Accordion from "@/lib/components/atoms/accordion";
 
 export const revalidate = 86400; // 24 hours
 export async function generateStaticParams() {
@@ -24,16 +24,11 @@ export default async function ParkPage({ params }: PageProps<"/parks/[id]">) {
       <h2 className="mt-4 mb-2 text-xl font-semibold">Biodiversidade</h2>
       <SeeMore>{park.biodiversity}</SeeMore>
 
-      <Suspense>
+      <Accordion.Root type="single" className="mt-6" collapsible>
         <PointsOfInterest parkId={park.id} />
-      </Suspense>
 
-      <section className="mt-6">
-        <h2 className="text-xl font-semibold">Eventos</h2>
-        <Suspense>
-          <Events parkId={park.id} />
-        </Suspense>
-      </section>
+        <Events parkId={park.id} />
+      </Accordion.Root>
     </div>
   );
 }
